@@ -82,12 +82,16 @@ class Translator extends BaseTranslator
      * @param string $locale
      * @param bool   $fallback
      */
-    protected function logMissingTranslation(string $key, array $replacements, ?string $locale, bool $fallback): void
+     protected function logMissingTranslation($key, $replace, $locale, $fallback)
     {
+        if (! $this->logger) {
+            $this->logger = logger()->channel('lost-in-translation')->getLogger();
+        }
+
         $this->logger->notice('Missing translation: ' . $key, [
-            'replacements' => $replacements,
-            'locale'       => $locale ?: config('app.locale'),
-            'fallback'     => $fallback ? config('app.fallback_locale') : '',
+            'replacements' => $replace,
+            'locale' => $locale ? $locale : config('app.locale'),
+            'fallback' => $fallback ? config('app.fallback_locale') : '',
         ]);
     }
 }
