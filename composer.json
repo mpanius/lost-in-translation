@@ -1,5 +1,5 @@
 {
-    "name": "stevegrunwell/lost-in-translation",
+    "name": "androlax2/lost-in-translation",
     "description": "Uncover missing translations and localization strings in Laravel applications",
     "type": "library",
     "keywords": ["laravel", "laravel package", "translation", "qa"],
