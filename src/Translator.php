@@ -51,6 +51,7 @@ class Translator extends BaseTranslator
      */
     public function get($key, array $replace = [], $locale = null, $fallback = true)
     {
+        if (config('lostintranslation.use_fallback') !== null && !config('lostintranslation.use_fallback')) $fallback = false;
         $translation = parent::get($key, $replace, $locale, $fallback);
 
         // The "translation" is unchanged from the key.
